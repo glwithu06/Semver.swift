@@ -1,0 +1,478 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C456EAC321F6F2B30075C611 /* Semver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C456EAB921F6F2B30075C611 /* Semver.framework */; };
+		C456EAC821F6F2B30075C611 /* SemverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C456EAC721F6F2B30075C611 /* SemverTests.swift */; };
+		C456EACA21F6F2B30075C611 /* Semver.h in Headers */ = {isa = PBXBuildFile; fileRef = C456EABC21F6F2B30075C611 /* Semver.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C456EAD521F6F3410075C611 /* Semver+Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C456EAD321F6F3410075C611 /* Semver+Parser.swift */; };
+		C456EAD621F6F3410075C611 /* Semver.swift in Sources */ = {isa = PBXBuildFile; fileRef = C456EAD421F6F3410075C611 /* Semver.swift */; };
+		C456EAD821F6F3550075C611 /* ParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C456EAD721F6F3550075C611 /* ParserTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C456EAC421F6F2B30075C611 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C456EAB021F6F2B30075C611 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C456EAB821F6F2B30075C611;
+			remoteInfo = Semver;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C456EAB921F6F2B30075C611 /* Semver.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Semver.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C456EABC21F6F2B30075C611 /* Semver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Semver.h; sourceTree = "<group>"; };
+		C456EABD21F6F2B30075C611 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C456EAC221F6F2B30075C611 /* SemverTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SemverTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C456EAC721F6F2B30075C611 /* SemverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SemverTests.swift; sourceTree = "<group>"; };
+		C456EAC921F6F2B30075C611 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C456EAD321F6F3410075C611 /* Semver+Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Semver+Parser.swift"; sourceTree = "<group>"; };
+		C456EAD421F6F3410075C611 /* Semver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Semver.swift; sourceTree = "<group>"; };
+		C456EAD721F6F3550075C611 /* ParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParserTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C456EAB621F6F2B30075C611 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C456EABF21F6F2B30075C611 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C456EAC321F6F2B30075C611 /* Semver.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C456EAAF21F6F2B30075C611 = {
+			isa = PBXGroup;
+			children = (
+				C456EABB21F6F2B30075C611 /* Semver */,
+				C456EAC621F6F2B30075C611 /* SemverTests */,
+				C456EABA21F6F2B30075C611 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C456EABA21F6F2B30075C611 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C456EAB921F6F2B30075C611 /* Semver.framework */,
+				C456EAC221F6F2B30075C611 /* SemverTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C456EABB21F6F2B30075C611 /* Semver */ = {
+			isa = PBXGroup;
+			children = (
+				C456EABC21F6F2B30075C611 /* Semver.h */,
+				C456EABD21F6F2B30075C611 /* Info.plist */,
+				C456EAD421F6F3410075C611 /* Semver.swift */,
+				C456EAD321F6F3410075C611 /* Semver+Parser.swift */,
+			);
+			path = Semver;
+			sourceTree = "<group>";
+		};
+		C456EAC621F6F2B30075C611 /* SemverTests */ = {
+			isa = PBXGroup;
+			children = (
+				C456EAD721F6F3550075C611 /* ParserTests.swift */,
+				C456EAC721F6F2B30075C611 /* SemverTests.swift */,
+				C456EAC921F6F2B30075C611 /* Info.plist */,
+			);
+			path = SemverTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		C456EAB421F6F2B30075C611 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C456EACA21F6F2B30075C611 /* Semver.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		C456EAB821F6F2B30075C611 /* Semver */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C456EACD21F6F2B30075C611 /* Build configuration list for PBXNativeTarget "Semver" */;
+			buildPhases = (
+				C456EAB421F6F2B30075C611 /* Headers */,
+				C456EAB521F6F2B30075C611 /* Sources */,
+				C456EAB621F6F2B30075C611 /* Frameworks */,
+				C456EAB721F6F2B30075C611 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Semver;
+			productName = Semver;
+			productReference = C456EAB921F6F2B30075C611 /* Semver.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		C456EAC121F6F2B30075C611 /* SemverTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C456EAD021F6F2B30075C611 /* Build configuration list for PBXNativeTarget "SemverTests" */;
+			buildPhases = (
+				C456EABE21F6F2B30075C611 /* Sources */,
+				C456EABF21F6F2B30075C611 /* Frameworks */,
+				C456EAC021F6F2B30075C611 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C456EAC521F6F2B30075C611 /* PBXTargetDependency */,
+			);
+			name = SemverTests;
+			productName = SemverTests;
+			productReference = C456EAC221F6F2B30075C611 /* SemverTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C456EAB021F6F2B30075C611 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1010;
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = glwithu06;
+				TargetAttributes = {
+					C456EAB821F6F2B30075C611 = {
+						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
+					};
+					C456EAC121F6F2B30075C611 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+				};
+			};
+			buildConfigurationList = C456EAB321F6F2B30075C611 /* Build configuration list for PBXProject "Semver" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = C456EAAF21F6F2B30075C611;
+			productRefGroup = C456EABA21F6F2B30075C611 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C456EAB821F6F2B30075C611 /* Semver */,
+				C456EAC121F6F2B30075C611 /* SemverTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C456EAB721F6F2B30075C611 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C456EAC021F6F2B30075C611 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C456EAB521F6F2B30075C611 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C456EAD521F6F3410075C611 /* Semver+Parser.swift in Sources */,
+				C456EAD621F6F3410075C611 /* Semver.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C456EABE21F6F2B30075C611 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C456EAD821F6F3550075C611 /* ParserTests.swift in Sources */,
+				C456EAC821F6F2B30075C611 /* SemverTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C456EAC521F6F2B30075C611 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C456EAB821F6F2B30075C611 /* Semver */;
+			targetProxy = C456EAC421F6F2B30075C611 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		C456EACB21F6F2B30075C611 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		C456EACC21F6F2B30075C611 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		C456EACE21F6F2B30075C611 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = E4D4Z8R7BP;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Semver/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.glwithu06.Semver;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C456EACF21F6F2B30075C611 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = E4D4Z8R7BP;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Semver/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.glwithu06.Semver;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C456EAD121F6F2B30075C611 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = E4D4Z8R7BP;
+				INFOPLIST_FILE = SemverTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.glwithu06.SemverTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C456EAD221F6F2B30075C611 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = E4D4Z8R7BP;
+				INFOPLIST_FILE = SemverTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.glwithu06.SemverTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C456EAB321F6F2B30075C611 /* Build configuration list for PBXProject "Semver" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C456EACB21F6F2B30075C611 /* Debug */,
+				C456EACC21F6F2B30075C611 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C456EACD21F6F2B30075C611 /* Build configuration list for PBXNativeTarget "Semver" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C456EACE21F6F2B30075C611 /* Debug */,
+				C456EACF21F6F2B30075C611 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C456EAD021F6F2B30075C611 /* Build configuration list for PBXNativeTarget "SemverTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C456EAD121F6F2B30075C611 /* Debug */,
+				C456EAD221F6F2B30075C611 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C456EAB021F6F2B30075C611 /* Project object */;
+}
