@@ -1,0 +1,10 @@
+disabled_rules:
+ - identifier_name
+
+line_length: 
+  warning: 150
+function_body_length:
+  warning: 60
+nesting:
+  type_level:
+    warning: 2

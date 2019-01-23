@@ -136,7 +136,7 @@ class ParserTests: XCTestCase {
     }
 
     func testParseIntVersion() {
-        guard let ver = 1.version else { XCTFail(); return }
+        guard let ver = 1.version else { XCTFail("Integer should be parsed."); return }
 
         XCTAssertEqual(ver.major, "1")
         XCTAssertEqual(ver.minor, "0")
@@ -152,7 +152,7 @@ class ParserTests: XCTestCase {
     }
 
     func testParseFloatVersion() {
-        guard let ver = 1.5637881234.version else { XCTFail(); return }
+        guard let ver = 1.5637881234.version else { XCTFail("Float should be parsed."); return }
 
         XCTAssertEqual(ver.major, "1")
         XCTAssertEqual(ver.minor, "5637881234")
@@ -162,7 +162,7 @@ class ParserTests: XCTestCase {
     }
 
     func testParseStringVersion() {
-        guard let ver = "v001.452.368-rc.alpha.11.log-test".version else { XCTFail(); return }
+        guard let ver = "v001.452.368-rc.alpha.11.log-test".version else { XCTFail("Valid String should be parsed."); return }
 
         XCTAssertEqual(ver.major, "001")
         XCTAssertEqual(ver.minor, "452")

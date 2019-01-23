@@ -51,7 +51,7 @@ extension Semver {
         guard prefix != "-" else { throw ParsingError.malformedString(input, nil) }
 
         let delimeterCharacterSet = CharacterSet(charactersIn: "\(prereleaseDelimeter)\(buildMetaDataDelimeter)")
-        guard let versionStr = scanner.scanUpToCharacters(from:delimeterCharacterSet) else {
+        guard let versionStr = scanner.scanUpToCharacters(from: delimeterCharacterSet) else {
             throw ParsingError.malformedString(input, nil)
         }
 

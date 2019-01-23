@@ -65,7 +65,7 @@ public func == (left: Semver, right: Semver) -> Bool {
             zip(left.prereleaseIdentifiers, right.prereleaseIdentifiers)
                 .reduce(into: true, { (result, element) in
                     guard result == true else { return }
-                    
+
                     let (l, r) = element
                     switch (l.isNumber, r.isNumber) {
                     case (true, true):
