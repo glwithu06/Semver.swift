@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Semver: CustomStringConvertible {
+public struct Semver: CustomStringConvertible, Comparable {
 
     public let major: String
     public let minor: String
@@ -84,12 +84,24 @@ public func < (left: Semver, right: Semver) -> Bool {
         return l.compare(r, options: .numeric) == .orderedAscending
     }
 
+    if left.prereleaseIdentifiers.count == 0 { return false }
+    if right.prereleaseIdentifiers.count == 0 { return true }
+
     for (l, r) in zip(left.prereleaseIdentifiers, right.prereleaseIdentifiers) {
         switch (l.isNumber, r.isNumber) {
-        case (true, true): return l.compare(r, options: .numeric) == .orderedAscending
+        case (true, true):
+            let result = l.compare(r, options: .numeric)
+            if result == .orderedSame {
+                continue
+            }
+            return result == .orderedAscending
         case (true, false): return true
         case (false, true): return false
-        default: return l < r
+        default:
+            if l == r {
+                continue
+            }
+            return l < r
         }
     }
 
@@ -99,6 +111,9 @@ public func < (left: Semver, right: Semver) -> Bool {
 extension String {
     fileprivate var isNumber: Bool {
         guard let regex = try? NSRegularExpression(pattern: "[0-9]+") else { return false }
+        OperationQueue.main.addOperation {
+
+        }
         return self.firstMatch(for: regex).map { $0 == self } ?? false
     }
 }
