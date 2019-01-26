@@ -136,7 +136,7 @@ class ParserTests: XCTestCase {
     }
 
     func testParseIntVersion() throws {
-        let ver = try Semver(version: 1)
+        let ver = try Semver(1)
 
         XCTAssertEqual(ver.major, "1")
         XCTAssertEqual(ver.minor, "0")
@@ -146,11 +146,11 @@ class ParserTests: XCTestCase {
     }
 
     func testParseNegativeIntVersion() throws {
-        XCTAssertThrowsError(try Semver(version: -11))
+        XCTAssertThrowsError(try Semver(-11))
     }
 
     func testParseFloatVersion() throws {
-        let ver = try Semver(version: 1.5637881234)
+        let ver = try Semver(1.5637881234)
 
         XCTAssertEqual(ver.major, "1")
         XCTAssertEqual(ver.minor, "5637881234")
@@ -160,7 +160,7 @@ class ParserTests: XCTestCase {
     }
 
     func testParseStringVersion() throws {
-        let ver = try Semver(version: "v001.452.368-rc.alpha.11.log-test")
+        let ver = try Semver("v001.452.368-rc.alpha.11.log-test")
 
         XCTAssertEqual(ver.major, "001")
         XCTAssertEqual(ver.minor, "452")
@@ -187,7 +187,75 @@ class ParserTests: XCTestCase {
             "0.-100.3"
         ]
         for version in invalidVersions {
-            XCTAssertThrowsError(try Semver(version: version))
+            XCTAssertThrowsError(try Semver(version))
         }
+    }
+
+    func testParseExpressibleByIntegerLiteral() {
+        let ver: Semver = 10
+
+        XCTAssertEqual(ver.major, "10")
+        XCTAssertEqual(ver.minor, "0")
+        XCTAssertEqual(ver.patch, "0")
+        XCTAssertEqual(ver.prereleaseIdentifiers, [])
+        XCTAssertEqual(ver.buildMetadataIdentifiers, [])
+    }
+
+    func testParseInvalidExpressibleByIntegerLiteral() {
+        let ver: Semver = -10
+
+        XCTAssertEqual(ver.major, "0")
+        XCTAssertEqual(ver.minor, "0")
+        XCTAssertEqual(ver.patch, "0")
+        XCTAssertEqual(ver.prereleaseIdentifiers, [])
+        XCTAssertEqual(ver.buildMetadataIdentifiers, [])
+    }
+
+    func testParseExpressibleByFloatLiteral() {
+        let ver: Semver = 10.346593
+
+        XCTAssertEqual(ver.major, "10")
+        XCTAssertEqual(ver.minor, "346593")
+        XCTAssertEqual(ver.patch, "0")
+        XCTAssertEqual(ver.prereleaseIdentifiers, [])
+        XCTAssertEqual(ver.buildMetadataIdentifiers, [])
+    }
+
+    func testParseInavlidExpressibleByFloatLiteral() {
+        let ver: Semver = -10.346593
+
+        XCTAssertEqual(ver.major, "0")
+        XCTAssertEqual(ver.minor, "0")
+        XCTAssertEqual(ver.patch, "0")
+        XCTAssertEqual(ver.prereleaseIdentifiers, [])
+        XCTAssertEqual(ver.buildMetadataIdentifiers, [])
+    }
+
+    func testParseExpressibleByStringLiteral() {
+        let ver: Semver = "69938113471411635120691317071569414.452.368-rc.alpha.11.log-test+sha.exp.5114f85.20190121"
+
+        XCTAssertEqual(ver.major, "69938113471411635120691317071569414")
+        XCTAssertEqual(ver.minor, "452")
+        XCTAssertEqual(ver.patch, "368")
+        XCTAssertEqual(ver.prereleaseIdentifiers.count, 4)
+        XCTAssertEqual(ver.prereleaseIdentifiers[0], "rc")
+        XCTAssertEqual(ver.prereleaseIdentifiers[1], "alpha")
+        XCTAssertEqual(ver.prereleaseIdentifiers[2], "11")
+        XCTAssertEqual(ver.prereleaseIdentifiers[3], "log-test")
+        XCTAssertEqual(ver.buildMetadataIdentifiers.count, 4)
+        XCTAssertEqual(ver.buildMetadataIdentifiers[0], "sha")
+        XCTAssertEqual(ver.buildMetadataIdentifiers[1], "exp")
+        XCTAssertEqual(ver.buildMetadataIdentifiers[2], "5114f85")
+        XCTAssertEqual(ver.buildMetadataIdentifiers[3], "20190121")
+    }
+
+    func testParseInavlidExpressibleByStringLiteral() {
+        let ver: Semver = "0.a.0-pre+meta"
+
+        XCTAssertEqual(ver.major, "0")
+        XCTAssertEqual(ver.minor, "0")
+        XCTAssertEqual(ver.patch, "0")
+        XCTAssertEqual(ver.prereleaseIdentifiers, [])
+        XCTAssertEqual(ver.buildMetadataIdentifiers, [])
     }
 }

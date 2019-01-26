@@ -109,12 +109,22 @@ extension Semver {
                       buildMetadataIdentifiers: buildMetadataIdentifiers)
     }
 
-    public init(version: String) throws {
+    public init(_ version: String) throws {
         self = try Semver.parse(version)
     }
 
-    public init<T: Numeric>(version: T) throws {
+    public init<T: Numeric>(_ version: T) throws {
         self = try Semver.parse("\(version)")
+    }
+}
+
+extension Bundle {
+    public var version: Semver? {
+        if let bundleVersion = self.infoDictionary?[kCFBundleVersionKey as String] as? String {
+            return try? Semver(bundleVersion)
+        } else {
+            return nil
+        }
     }
 }
 
