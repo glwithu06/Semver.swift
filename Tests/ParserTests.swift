@@ -135,8 +135,8 @@ class ParserTests: XCTestCase {
         }
     }
 
-    func testParseIntVersion() {
-        guard let ver = 1.version else { XCTFail("Integer should be parsed."); return }
+    func testParseIntVersion() throws {
+        let ver = try Semver(version: 1)
 
         XCTAssertEqual(ver.major, "1")
         XCTAssertEqual(ver.minor, "0")
@@ -145,14 +145,12 @@ class ParserTests: XCTestCase {
         XCTAssertEqual(ver.buildMetadataIdentifiers, [])
     }
 
-    func testParseNegativeIntVersion() {
-        let ver = (-11).version
-
-        XCTAssertNil(ver)
+    func testParseNegativeIntVersion() throws {
+        XCTAssertThrowsError(try Semver(version: -11))
     }
 
-    func testParseFloatVersion() {
-        guard let ver = 1.5637881234.version else { XCTFail("Float should be parsed."); return }
+    func testParseFloatVersion() throws {
+        let ver = try Semver(version: 1.5637881234)
 
         XCTAssertEqual(ver.major, "1")
         XCTAssertEqual(ver.minor, "5637881234")
@@ -161,8 +159,8 @@ class ParserTests: XCTestCase {
         XCTAssertEqual(ver.buildMetadataIdentifiers, [])
     }
 
-    func testParseStringVersion() {
-        guard let ver = "v001.452.368-rc.alpha.11.log-test".version else { XCTFail("Valid String should be parsed."); return }
+    func testParseStringVersion() throws {
+        let ver = try Semver(version: "v001.452.368-rc.alpha.11.log-test")
 
         XCTAssertEqual(ver.major, "001")
         XCTAssertEqual(ver.minor, "452")
@@ -189,7 +187,7 @@ class ParserTests: XCTestCase {
             "0.-100.3"
         ]
         for version in invalidVersions {
-            XCTAssertNil(version.version)
+            XCTAssertThrowsError(try Semver(version: version))
         }
     }
 }

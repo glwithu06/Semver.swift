@@ -8,7 +8,7 @@ env:
   global:
     - PROJECT="Semver.xcodeproj"
     - SCHEME="Semver-Package"
-    - IOS_SDK="iphonesimulator12.0"
+    - IOS_SDK="iphonesimulator12.1"
     - MACOS_SDK="macosx10.14"
   matrix:
     - SDK="$IOS_SDK"      DESTINATION="platform=iOS Simulator,name=iPhone X,OS=12.0"

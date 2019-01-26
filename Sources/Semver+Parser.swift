@@ -108,17 +108,13 @@ extension Semver {
                       prereleaseIdentifiers: prereleaseIdentifiers,
                       buildMetadataIdentifiers: buildMetadataIdentifiers)
     }
-}
 
-extension String {
-    public var version: Semver? {
-        return try? Semver.parse(self)
+    public init(version: String) throws {
+        self = try Semver.parse(version)
     }
-}
 
-extension Numeric {
-    public var version: Semver? {
-        return try? Semver.parse("\(self)")
+    public init<T: Numeric>(version: T) throws {
+        self = try Semver.parse("\(version)")
     }
 }
 
