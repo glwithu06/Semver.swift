@@ -7,7 +7,7 @@ branches:
 env:
   global:
     - PROJECT="Semver.xcodeproj"
-    - SCHEME="Semver"
+    - SCHEME="Semver-Package"
     - IOS_SDK="iphonesimulator12.0"
     - MACOS_SDK="macosx10.14"
   matrix:
@@ -30,12 +30,3 @@ script:
       -configuration Debug
       -enableCodeCoverage YES
       CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO | xcpretty -c
-
-deploy:
-  provider: releases
-  api_key: $GITHUB_ACCESS_TOKEN
-  file: "$FRAMEWORK.framework.zip"
-  skip_cleanup: true
-  on:
-    repo: glwithu06/Semver.swift
-    tags: true
