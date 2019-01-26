@@ -40,7 +40,7 @@ public struct Semver: CustomStringConvertible, Comparable {
             return version
                 + (prerelease.count > 0 ? "\(prereleaseDelimeter)\(prerelease)" : "")
                 + (buildMetadata.count > 0 ? "\(buildMetaDataDelimeter)\(buildMetadata)" : "")
-        case .long:
+        case .comparable:
             return version
                 + (prerelease.count > 0 ? "\(prereleaseDelimeter)\(prerelease)" : "")
         case .short:
@@ -52,7 +52,7 @@ public struct Semver: CustomStringConvertible, Comparable {
 extension Semver {
     public enum Style {
         case short // Major.Minor.Patch
-        case long // Major.Minor.Patch-Prerelease
+        case comparable // Major.Minor.Patch-Prerelease
         case full // Everything
     }
 }

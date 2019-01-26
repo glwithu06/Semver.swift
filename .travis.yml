@@ -11,7 +11,7 @@ env:
     - IOS_SDK="iphonesimulator12.1"
     - MACOS_SDK="macosx10.14"
   matrix:
-    - SDK="$IOS_SDK"      DESTINATION="platform=iOS Simulator,name=iPhone X,OS=12.0"
+    - SDK="$IOS_SDK"      DESTINATION="platform=iOS Simulator,name=iPhone X,OS=12.1"
     - SDK="$MACOS_SDK"    DESTINATION="arch=x86_64"
 
 install:
