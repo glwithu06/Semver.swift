@@ -33,7 +33,7 @@ extension Semver {
         }
     }
 
-    static public func parse(_ input: String) throws -> Semver {
+    static internal func parse(_ input: String) throws -> Semver {
         let major: String
         let minor: String
         let patch: String

@@ -13,7 +13,7 @@ import Semver
 class ParserTests: XCTestCase {
 
     func testParseBasicVersion() throws {
-        let ver = try Semver.parse("1.452.368")
+        let ver = try Semver("1.452.368")
 
         XCTAssertEqual(ver.major, "1")
         XCTAssertEqual(ver.minor, "452")
@@ -23,7 +23,7 @@ class ParserTests: XCTestCase {
     }
 
     func testParsePrereleaseVersion() throws {
-        let ver = try Semver.parse("1.452.368-rc.alpha.11.log-test")
+        let ver = try Semver("1.452.368-rc.alpha.11.log-test")
 
         XCTAssertEqual(ver.major, "1")
         XCTAssertEqual(ver.minor, "452")
@@ -37,7 +37,7 @@ class ParserTests: XCTestCase {
     }
 
     func testParseBuildMetadataVersion() throws {
-        let ver = try Semver.parse("1.452.368+sha.exp.5114f85.20190121")
+        let ver = try Semver("1.452.368+sha.exp.5114f85.20190121")
 
         XCTAssertEqual(ver.major, "1")
         XCTAssertEqual(ver.minor, "452")
@@ -51,14 +51,14 @@ class ParserTests: XCTestCase {
     }
 
     func testParseBigNumberVersion() throws {
-        let ver = try Semver.parse("69938113471411635120691317071569414.64537206108257636612034178144141277.47527207420859796686256474452275428")
+        let ver = try Semver("69938113471411635120691317071569414.64537206108257636612034178144141277.47527207420859796686256474452275428")
         XCTAssertEqual(ver.major, "69938113471411635120691317071569414")
         XCTAssertEqual(ver.minor, "64537206108257636612034178144141277")
         XCTAssertEqual(ver.patch, "47527207420859796686256474452275428")
     }
 
     func testParseFullVersion() throws {
-        let ver = try Semver.parse("69938113471411635120691317071569414.452.368-rc.alpha.11.log-test+sha.exp.5114f85.20190121")
+        let ver = try Semver("69938113471411635120691317071569414.452.368-rc.alpha.11.log-test+sha.exp.5114f85.20190121")
 
         XCTAssertEqual(ver.major, "69938113471411635120691317071569414")
         XCTAssertEqual(ver.minor, "452")
@@ -76,7 +76,7 @@ class ParserTests: XCTestCase {
     }
 
     func testParsePrefixedVersion() throws {
-        let ver = try Semver.parse("v001.452.368-rc.alpha.11.log-test")
+        let ver = try Semver("v001.452.368-rc.alpha.11.log-test")
 
         XCTAssertEqual(ver.major, "001")
         XCTAssertEqual(ver.minor, "452")
@@ -90,7 +90,7 @@ class ParserTests: XCTestCase {
     }
 
     func testParseMajorOnlyVersion() throws {
-        let ver = try Semver.parse("v1-rc.alpha.11.log-test")
+        let ver = try Semver("v1-rc.alpha.11.log-test")
 
         XCTAssertEqual(ver.major, "1")
         XCTAssertEqual(ver.minor, "0")
@@ -104,7 +104,7 @@ class ParserTests: XCTestCase {
     }
 
     func testParseMajorMinorVersion() throws {
-        let ver = try Semver.parse("v1.354-rc.alpha.11.log-test")
+        let ver = try Semver("v1.354-rc.alpha.11.log-test")
 
         XCTAssertEqual(ver.major, "1")
         XCTAssertEqual(ver.minor, "354")
@@ -131,7 +131,7 @@ class ParserTests: XCTestCase {
             "0.-100.3"
         ]
         for version in invalidVersions {
-            XCTAssertThrowsError(try Semver.parse(version))
+            XCTAssertThrowsError(try Semver(version))
         }
     }
 

@@ -31,6 +31,20 @@ public struct Semver: CustomStringConvertible, Comparable {
         self.buildMetadataIdentifiers = buildMetadataIdentifiers
     }
 
+    public init(major: UInt,
+                minor: UInt = 0,
+                patch: UInt = 0,
+                prereleaseIdentifiers: [String] = [],
+                buildMetadataIdentifiers: [String] = []) {
+        self.init(
+            major: "\(major)",
+            minor: "\(minor)",
+            patch: "\(patch)",
+            prereleaseIdentifiers: prereleaseIdentifiers,
+            buildMetadataIdentifiers: buildMetadataIdentifiers
+        )
+    }
+
     public func toString(style: Style = .full) -> String {
         let version = [major, minor, patch].joined(separator: dotDelimeter)
         let prerelease = prereleaseIdentifiers.joined(separator: dotDelimeter)
