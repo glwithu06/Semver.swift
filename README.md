@@ -7,6 +7,7 @@ Semantic Versioning implementation in Swift.
 
 * Xcode 10.1+
 * Swift 4.2
+* iOS 8
 * macOS 10.11
 * tvOS 9.0
 * watchOS 2.0
@@ -55,17 +56,14 @@ $ swift build
 ### Manually using gitsubmodules
 
 * Add Semver as a submodule
-
 ```
 $ git submodule add git@github.com:glwithu06/Semver.swift.git
 ```
-
 * Generate Semver.xcodeproj
 
 ```
 $ swift package generate-xcodeproj
 ```
-
 * Drag `Semver.xcodeproj` into Project Navigator
 * Go to `Project > Targets > Build Phases > Link Binary With Libraries`, click `+` and selecte `Semver` targets 
 
@@ -86,6 +84,7 @@ let version = Semver(major: 1, minor: 23, patch: 45, prereleaseIdentifiers: ["rc
 
 ```
 `minor`, `patch` are optional parameters default to "0".
+
 `prereleaseIdentifiers`, `buildMetadataIdentifiers` are optional parameters default to `[]`.
 
 
@@ -133,10 +132,11 @@ let version: Semver = 1.23
 
 ### Compare
 
-The default operators for comparsion are implemented
-`<` , `<=` , `>` ,`>=` ,`==` , `!=`
+The default operators for comparsion are implemented(`<` , `<=` , `>` ,`>=` ,`==` , `!=`).
+
 This will comapre major, minor, patch and the prerelease identifiers according to the [Semantic Versioning Specification](http://semver.org/spec/v2.0.0.html).
 
 ## Contribution
 Any pull requests and bug reports are welcome!
+
 Feel free to make a pull request.
