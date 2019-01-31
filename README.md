@@ -41,31 +41,17 @@ import PackageDescription
 let package = Package(
   name: "NAME",
   dependencies: [
-    .package(url: "https://github.com/glwithu06/Semver.swift.git", "1.0.0")
+    .package(url: "https://github.com/glwithu06/Semver.swift.git", from: "SEMVER_TAG")
   ],
   targets: [
     .target(name: "NAME", dependencies: ["Semver"])
   ]
 )
 ```
-Then type:
+Replace `SEMVER_TAG` and then type:
 ```
 $ swift build
 ```
-
-### Manually using gitsubmodules
-
-* Add Semver as a submodule
-```
-$ git submodule add git@github.com:glwithu06/Semver.swift.git
-```
-* Generate Semver.xcodeproj
-
-```
-$ swift package generate-xcodeproj
-```
-* Drag `Semver.xcodeproj` into Project Navigator
-* Go to `Project > Targets > Build Phases > Link Binary With Libraries`, click `+` and selecte `Semver` targets 
 
 ## Usage
 

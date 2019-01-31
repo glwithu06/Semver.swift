@@ -5,6 +5,7 @@ Pod::Spec.new do |s|
   s.summary      = "Semantic Versioning implementation in Swift"
   s.homepage     = "https://github.com/glwithu06/Semver.swift"
   s.author       = { "Nate Kim" => "glwithu06@gmail.com" }
+  s.frameworks   = "Foundation"
   s.source       = { :git => "https://github.com/glwithu06/Semver.swift.git", :tag => "#{s.version}" }
   s.source_files  = "Sources/*.swift"
   s.ios.deployment_target = "8.0"
