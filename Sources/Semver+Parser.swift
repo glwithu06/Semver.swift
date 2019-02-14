@@ -120,7 +120,7 @@ extension Semver {
 
 extension Bundle {
     public var version: Semver? {
-        if let bundleVersion = self.infoDictionary?[kCFBundleVersionKey as String] as? String {
+        if let bundleVersion = self.infoDictionary?["CFBundleShortVersionString"] as? String {
             return try? Semver(bundleVersion)
         } else {
             return nil
