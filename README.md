@@ -1,3 +1,16 @@
+<p align="center">
+  <img alt="Swift" src="https://img.shields.io/badge/Swift-4.2-orange.svg">
+  <a href="https://cocoapods.org/pods/Semver.swift" target="_blank">
+    <img alt="CocoaPods" src="http://img.shields.io/cocoapods/v/Semver.swift.svg">
+  </a>
+  <a href="https://github.com/glwithu06/Semver.swift" target="_blank">
+    <img alt="Platform" src="https://img.shields.io/cocoapods/p/Semver.swift.svg?style=flat">
+  </a>
+  <a href="https://travis-ci.org/glwithu06/Semver.swift" target="_blank">
+    <img alt="Build Status" src="https://travis-ci.org/glwithu06/Semver.swift.svg?branch=master">
+  </a>
+</p>
+
 # Semantic Versioning
 
 Semantic Versioning implementation in Swift.
