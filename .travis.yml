@@ -20,6 +20,9 @@ install:
 before_script:
   - swift package generate-xcodeproj
 
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+
 script:
   - swiftlint lint
   - xcodebuild clean build test

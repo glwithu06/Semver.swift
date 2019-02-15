@@ -9,6 +9,9 @@
   <a href="https://travis-ci.org/glwithu06/Semver.swift" target="_blank">
     <img alt="Build Status" src="https://travis-ci.org/glwithu06/Semver.swift.svg?branch=master">
   </a>
+  <a href="https://codecov.io/gh/glwithu06/Semver.swift/" target="_blank">
+    <img alt="Codecov" src="https://img.shields.io/codecov/c/github/glwithu06/Semver.swift.svg">
+  </a>
 </p>
 
 # Semantic Versioning
