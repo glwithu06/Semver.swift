@@ -19,7 +19,7 @@ public struct Semver: CustomStringConvertible, Comparable {
         return toString(style: .full)
     }
 
-    public init(major: String,
+    internal init(major: String,
                 minor: String = "0",
                 patch: String = "0",
                 prereleaseIdentifiers: [String] = [],
@@ -125,9 +125,6 @@ public func < (left: Semver, right: Semver) -> Bool {
 extension String {
     fileprivate var isNumber: Bool {
         guard let regex = try? NSRegularExpression(pattern: "[0-9]+") else { return false }
-        OperationQueue.main.addOperation {
-
-        }
         return self.firstMatch(for: regex).map { $0 == self } ?? false
     }
 }

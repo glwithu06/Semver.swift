@@ -76,12 +76,6 @@ $ swift build
 `Semver` can be instantiated directly:
 
 ```Swift
-let version = Semver(major: "1", minor: "23", patch: "45", prereleaseIdentifiers: ["rc", "1"], buildMetadataIdentifiers: ["B001"])
-
-```
-or
-
-```Swift
 let version = Semver(major: 1, minor: 23, patch: 45, prereleaseIdentifiers: ["rc", "1"], buildMetadataIdentifiers: ["B001"])
 
 ```
