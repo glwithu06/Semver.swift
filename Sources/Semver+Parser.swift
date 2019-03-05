@@ -8,9 +8,9 @@
 
 import Foundation
 
-internal let dotDelimeter = "."
-internal let prereleaseDelimeter = "-"
-internal let buildMetaDataDelimeter = "+"
+internal let dotDelimiter = "."
+internal let prereleaseDelimiter = "-"
+internal let buildMetaDataDelimiter = "+"
 
 extension Semver {
     public enum ParsingError: Error {
@@ -26,7 +26,7 @@ extension Semver {
             case .malformedString(let version, let e):
                 return "malformed \"\(version)\"\t\(e.map { "\nInfo)" + $0.localizedDescription } ?? "")"
             case .digitsNotFound(let version):
-                return "There are no digits in \(version)"
+                return "no digits in \(version)"
             case .parseError(let component, let e):
                 return "\(component) error: \(e.localizedDescription)"
             }
@@ -41,7 +41,7 @@ extension Semver {
         let buildMetadataIdentifiers: [String]
         let extra: String
 
-        let validateRegex = try NSRegularExpression(pattern: "^([0-9A-Za-z\(prereleaseDelimeter)\\\(dotDelimeter)|\\\(buildMetaDataDelimeter)]+)$")
+        let validateRegex = try NSRegularExpression(pattern: "^([0-9A-Za-z|\\\(prereleaseDelimiter)|\\\(dotDelimiter)|\\\(buildMetaDataDelimiter)]+)$")
         guard input.rangeOfFirstMatch(for: validateRegex).length == input.count else {
             throw ParsingError.malformedString(input, nil)
         }
@@ -50,8 +50,8 @@ extension Semver {
         let prefix = scanner.scanUpToCharacters(from: CharacterSet.decimalDigits)
         guard prefix != "-" else { throw ParsingError.malformedString(input, nil) }
 
-        let delimeterCharacterSet = CharacterSet(charactersIn: "\(prereleaseDelimeter)\(buildMetaDataDelimeter)")
-        guard let versionStr = scanner.scanUpToCharacters(from: delimeterCharacterSet) else {
+        let delimiterCharacterSet = CharacterSet(charactersIn: "\(prereleaseDelimiter)\(buildMetaDataDelimiter)")
+        guard let versionStr = scanner.scanUpToCharacters(from: delimiterCharacterSet) else {
             throw ParsingError.malformedString(input, nil)
         }
 
@@ -65,7 +65,7 @@ extension Semver {
             guard !scanner.isAtEnd else {
                 return "0"
             }
-            scanner.scanString(dotDelimeter, into: nil)
+            scanner.scanString(dotDelimiter, into: nil)
             guard let digits = scanner.scanCharacters(from: CharacterSet.decimalDigits) else {
                 throw ParsingError.digitsNotFound(scanner.string)
             }
@@ -77,27 +77,27 @@ extension Semver {
         let scanIndex = String.Index(encodedOffset: scanner.scanLocation)
         extra = String(input[scanIndex...])
         do {
-            let prereleaseRegex = try NSRegularExpression(pattern: "(?<=\(prereleaseDelimeter))([0-9A-Za-z-\\.]+)")
+            let prereleaseRegex = try NSRegularExpression(pattern: "(?<=\(prereleaseDelimiter))([0-9A-Za-z-\\\(dotDelimiter)]+)")
             prereleaseIdentifiers = Range(extra.rangeOfFirstMatch(for: prereleaseRegex), in: extra)
                 .map { String(extra[$0]) }
-                .map { $0.components(separatedBy: dotDelimeter) }
+                .map { $0.components(separatedBy: dotDelimiter) }
                 ?? []
         } catch let e {
             throw ParsingError.parseError(.prereleaseIdentifiers, e)
         }
 
         do {
-            let buildMetadataRegex = try NSRegularExpression(pattern: "(?<=\\\(buildMetaDataDelimeter))([0-9A-Za-z-\\.]+)")
+            let buildMetadataRegex = try NSRegularExpression(pattern: "(?<=\\\(buildMetaDataDelimiter))([0-9A-Za-z-\\\(dotDelimiter)]+)")
             buildMetadataIdentifiers = Range(extra.rangeOfFirstMatch(for: buildMetadataRegex), in: extra)
                 .map { String(extra[$0]) }
-                .map { $0.components(separatedBy: dotDelimeter) }
+                .map { $0.components(separatedBy: dotDelimiter) }
                 ?? []
         } catch let e {
             throw ParsingError.parseError(.buildMetadataIdentifiers, e)
         }
 
-        let prerelease = prereleaseIdentifiers.count > 0 ? prereleaseDelimeter + prereleaseIdentifiers.joined(separator: dotDelimeter) : ""
-        let metadata = buildMetadataIdentifiers.count > 0 ? buildMetaDataDelimeter + buildMetadataIdentifiers.joined(separator: dotDelimeter) : ""
+        let prerelease = prereleaseIdentifiers.count > 0 ? prereleaseDelimiter + prereleaseIdentifiers.joined(separator: dotDelimiter) : ""
+        let metadata = buildMetadataIdentifiers.count > 0 ? buildMetaDataDelimiter + buildMetadataIdentifiers.joined(separator: dotDelimiter) : ""
         guard extra.replacingOccurrences(of: prerelease, with: "").replacingOccurrences(of: metadata, with: "").count == 0 else {
             throw ParsingError.malformedString(input, nil)
         }

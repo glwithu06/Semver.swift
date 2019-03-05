@@ -46,17 +46,17 @@ public struct Semver: CustomStringConvertible, Comparable {
     }
 
     public func toString(style: Style = .full) -> String {
-        let version = [major, minor, patch].joined(separator: dotDelimeter)
-        let prerelease = prereleaseIdentifiers.joined(separator: dotDelimeter)
-        let buildMetadata = buildMetadataIdentifiers.joined(separator: dotDelimeter)
+        let version = [major, minor, patch].joined(separator: dotDelimiter)
+        let prerelease = prereleaseIdentifiers.joined(separator: dotDelimiter)
+        let buildMetadata = buildMetadataIdentifiers.joined(separator: dotDelimiter)
         switch style {
         case .full:
             return version
-                + (prerelease.count > 0 ? "\(prereleaseDelimeter)\(prerelease)" : "")
-                + (buildMetadata.count > 0 ? "\(buildMetaDataDelimeter)\(buildMetadata)" : "")
+                + (prerelease.count > 0 ? "\(prereleaseDelimiter)\(prerelease)" : "")
+                + (buildMetadata.count > 0 ? "\(buildMetaDataDelimiter)\(buildMetadata)" : "")
         case .comparable:
             return version
-                + (prerelease.count > 0 ? "\(prereleaseDelimeter)\(prerelease)" : "")
+                + (prerelease.count > 0 ? "\(prereleaseDelimiter)\(prerelease)" : "")
         case .short:
             return version
         }
