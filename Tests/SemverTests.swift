@@ -76,7 +76,7 @@ class SemverTests: XCTestCase {
     func testVersionToString() throws {
         let version = try Semver("1.101.345-rc.alpha.11+build.sha.111.extended")
 
-        XCTAssertEqual("1.101.345", version.toString(style: .short))
+        XCTAssertEqual("1.101.345", version.toString(style: .compact))
         XCTAssertEqual("1.101.345-rc.alpha.11", version.toString(style: .comparable))
         XCTAssertEqual("1.101.345-rc.alpha.11+build.sha.111.extended", version.toString(style: .full))
         XCTAssertEqual("1.101.345-rc.alpha.11+build.sha.111.extended", version.toString())

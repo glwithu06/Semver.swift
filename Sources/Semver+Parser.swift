@@ -109,10 +109,18 @@ extension Semver {
                       buildMetadataIdentifiers: buildMetadataIdentifiers)
     }
 
+    /// Parses the string as a Semver and returns the result.
+    ///
+    /// - Parameter version: a string to parse.
+    /// - Throws: throw `ParsingError` if the string is not a valid representation of a semantic version.
     public init(_ version: String) throws {
         self = try Semver.parse(version)
     }
 
+    /// Parses the number as a Semver and returns the result.
+    ///
+    /// - Parameter version: a numeric object to parse.
+    /// - Throws: throw `ParsingError` if the numeric object is not a valid representation of a semantic version.
     public init<T: Numeric>(_ version: T) throws {
         self = try Semver.parse("\(version)")
     }
