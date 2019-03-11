@@ -8,6 +8,16 @@
 
 import Foundation
 
+/**
+ * A struct that represent a semantic version according to [the Semantic Versioning Specification](https://semver.org/spec/v2.0.0.html).
+ *
+ * - Properties:
+ *   - major: major in string.
+ *   - minor: minor minor in string.
+ *   - patch: patch in string.
+ *   - prereleaseIdentifiers: dot separated list of pre-release identifiers.
+ *   - buildMetadataIdentifiers: dot separated list of build metadata identifiers.
+ */
 public struct Semver: CustomStringConvertible, Comparable {
 
     public let major: String
@@ -31,6 +41,14 @@ public struct Semver: CustomStringConvertible, Comparable {
         self.buildMetadataIdentifiers = buildMetadataIdentifiers
     }
 
+    /// Primary constructor to create Semver.
+    ///
+    /// - Parameters:
+    ///   - major: major in number.
+    ///   - minor: minor in number.
+    ///   - patch: patch in number.
+    ///   - prereleaseIdentifiers: dot separated list of pre-release identifiers.
+    ///   - buildMetadataIdentifiers: dot separated list of build metadata identifiers.
     public init(major: UInt,
                 minor: UInt = 0,
                 patch: UInt = 0,
@@ -45,6 +63,10 @@ public struct Semver: CustomStringConvertible, Comparable {
         )
     }
 
+    /// Returns a string representation of the `Semver`.
+    ///
+    /// - Parameter style: Specifies string representation Style.
+    /// - Returns: a string representation of the Semver.
     public func toString(style: Style = .full) -> String {
         let version = [major, minor, patch].joined(separator: dotDelimiter)
         let prerelease = prereleaseIdentifiers.joined(separator: dotDelimiter)
@@ -57,17 +79,25 @@ public struct Semver: CustomStringConvertible, Comparable {
         case .comparable:
             return version
                 + (prerelease.count > 0 ? "\(prereleaseDelimiter)\(prerelease)" : "")
-        case .short:
+        case .compact:
             return version
         }
     }
 }
 
 extension Semver {
+    /// Specifies string representation style.
+    ///
+    /// - compact: Specifies a compact style, *Major.Minor.Patch* only
+    /// - comparable: Specifies a COMPARABLE style, *Major.Minor.Patch-PreReleaseIdentifiers*
+    /// - full: Specifies a FULL style, *Major.Minor.Patch-PreReleaseIdentifiers+BuildMetadataIdentifiers*
     public enum Style {
-        case short // Major.Minor.Patch
-        case comparable // Major.Minor.Patch-Prerelease
-        case full // Everything
+        /// Specifies a compact style, *Major.Minor.Patch* only, such as “1.2.3”.
+        case compact
+        /// Specifies a COMPARABLE style, *Major.Minor.Patch-PreReleaseIdentifiers*, such as “1.2.3-rc.1”.
+        case comparable
+        /// Specifies a FULL style, *Major.Minor.Patch-PreReleaseIdentifiers+BuildMetadataIdentifiers*, such as “1.2.3-rc.1+SHA.a0f21”.
+        case full
     }
 }
 
