@@ -30,10 +30,10 @@ public struct Semver: CustomStringConvertible, Comparable {
     }
 
     internal init(major: String,
-                minor: String = "0",
-                patch: String = "0",
-                prereleaseIdentifiers: [String] = [],
-                buildMetadataIdentifiers: [String] = []) {
+                  minor: String = "0",
+                  patch: String = "0",
+                  prereleaseIdentifiers: [String] = [],
+                  buildMetadataIdentifiers: [String] = []) {
         self.major = major
         self.minor = minor
         self.patch = patch

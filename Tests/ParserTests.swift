@@ -37,17 +37,18 @@ class ParserTests: XCTestCase {
     }
 
     func testParseBuildMetadataVersion() throws {
-        let ver = try Semver("1.452.368+sha.exp.5114f85.20190121")
+        let ver = try Semver("1.452.368+sha.exp.5114f85.20190121.hyphen-test")
 
         XCTAssertEqual(ver.major, "1")
         XCTAssertEqual(ver.minor, "452")
         XCTAssertEqual(ver.patch, "368")
         XCTAssertEqual(ver.prereleaseIdentifiers, [])
-        XCTAssertEqual(ver.buildMetadataIdentifiers.count, 4)
+        XCTAssertEqual(ver.buildMetadataIdentifiers.count, 5)
         XCTAssertEqual(ver.buildMetadataIdentifiers[0], "sha")
         XCTAssertEqual(ver.buildMetadataIdentifiers[1], "exp")
         XCTAssertEqual(ver.buildMetadataIdentifiers[2], "5114f85")
         XCTAssertEqual(ver.buildMetadataIdentifiers[3], "20190121")
+        XCTAssertEqual(ver.buildMetadataIdentifiers[4], "hyphen-test")
     }
 
     func testParseBigNumberVersion() throws {
@@ -58,7 +59,7 @@ class ParserTests: XCTestCase {
     }
 
     func testParseFullVersion() throws {
-        let ver = try Semver("69938113471411635120691317071569414.452.368-rc.alpha.11.log-test+sha.exp.5114f85.20190121")
+        let ver = try Semver("69938113471411635120691317071569414.452.368-rc.alpha.11.log-test+sha.exp.5114f85.20190121.hyphen-test")
 
         XCTAssertEqual(ver.major, "69938113471411635120691317071569414")
         XCTAssertEqual(ver.minor, "452")
@@ -68,11 +69,12 @@ class ParserTests: XCTestCase {
         XCTAssertEqual(ver.prereleaseIdentifiers[1], "alpha")
         XCTAssertEqual(ver.prereleaseIdentifiers[2], "11")
         XCTAssertEqual(ver.prereleaseIdentifiers[3], "log-test")
-        XCTAssertEqual(ver.buildMetadataIdentifiers.count, 4)
+        XCTAssertEqual(ver.buildMetadataIdentifiers.count, 5)
         XCTAssertEqual(ver.buildMetadataIdentifiers[0], "sha")
         XCTAssertEqual(ver.buildMetadataIdentifiers[1], "exp")
         XCTAssertEqual(ver.buildMetadataIdentifiers[2], "5114f85")
         XCTAssertEqual(ver.buildMetadataIdentifiers[3], "20190121")
+        XCTAssertEqual(ver.buildMetadataIdentifiers[4], "hyphen-test")
     }
 
     func testParsePrefixedVersion() throws {
@@ -232,7 +234,7 @@ class ParserTests: XCTestCase {
     }
 
     func testParseExpressibleByStringLiteral() {
-        let ver: Semver = "69938113471411635120691317071569414.452.368-rc.alpha.11.log-test+sha.exp.5114f85.20190121"
+        let ver: Semver = "69938113471411635120691317071569414.452.368-rc.alpha.11.log-test+sha.exp.5114f85.20190121.hyphen-test"
 
         XCTAssertEqual(ver.major, "69938113471411635120691317071569414")
         XCTAssertEqual(ver.minor, "452")
@@ -242,11 +244,12 @@ class ParserTests: XCTestCase {
         XCTAssertEqual(ver.prereleaseIdentifiers[1], "alpha")
         XCTAssertEqual(ver.prereleaseIdentifiers[2], "11")
         XCTAssertEqual(ver.prereleaseIdentifiers[3], "log-test")
-        XCTAssertEqual(ver.buildMetadataIdentifiers.count, 4)
+        XCTAssertEqual(ver.buildMetadataIdentifiers.count, 5)
         XCTAssertEqual(ver.buildMetadataIdentifiers[0], "sha")
         XCTAssertEqual(ver.buildMetadataIdentifiers[1], "exp")
         XCTAssertEqual(ver.buildMetadataIdentifiers[2], "5114f85")
         XCTAssertEqual(ver.buildMetadataIdentifiers[3], "20190121")
+        XCTAssertEqual(ver.buildMetadataIdentifiers[4], "hyphen-test")
     }
 
     func testParseInavlidExpressibleByStringLiteral() {

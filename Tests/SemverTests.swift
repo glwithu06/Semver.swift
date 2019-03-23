@@ -12,7 +12,8 @@ import XCTest
 class SemverTests: XCTestCase {
 
     func testSemverConstructor() {
-        let ver = Semver(major: 1, minor: 452, patch: 368, prereleaseIdentifiers: ["rc", "alpha", "11", "log-test"], buildMetadataIdentifiers: ["sha", "exp", "5114f85", "20190121"])
+        let ver = Semver(major: 1, minor: 452, patch: 368,
+                         prereleaseIdentifiers: ["rc", "alpha", "11", "log-test"], buildMetadataIdentifiers: ["sha", "exp", "5114f85", "20190121"])
 
         XCTAssertEqual(ver.major, "1")
         XCTAssertEqual(ver.minor, "452")
@@ -49,9 +50,10 @@ class SemverTests: XCTestCase {
 
     func testEqualPrereleaseVersion() {
         XCTAssertEqual(try Semver("1.100.3-rc.1"), Semver(major: "1", minor: "100", patch: "3", prereleaseIdentifiers: ["rc", "1"]))
-        XCTAssertNotEqual(try Semver("1.100.3-rc.1"), try Semver("1.101.3-rc.2"))
-        XCTAssertNotEqual(try Semver("1.100.3-alpha"), try Semver("1.101.3-beta"))
-        XCTAssertNotEqual(try Semver("1.100.3-rc.a"), try Semver("1.101.3-rc.1"))
+        XCTAssertNotEqual(try Semver("1.100.3-rc.1"), try Semver("1.100.3-rc.2"))
+        XCTAssertNotEqual(try Semver("1.100.3-rc.1"), try Semver("1.100.3-rc.1.2.3"))
+        XCTAssertNotEqual(try Semver("1.100.3-alpha"), try Semver("1.100.3-beta"))
+        XCTAssertNotEqual(try Semver("1.100.3-rc.a"), try Semver("1.100.3-rc.1"))
     }
 
     func testEqualBuildmetadataVersion() {
@@ -80,6 +82,9 @@ class SemverTests: XCTestCase {
         // alphabetical order
         XCTAssertLessThan(try Semver("1.99.231-test.alpha"), try Semver("1.99.231-test.beta"))
         XCTAssertLessThan(try Semver("1.99.231-test.19b"), try Semver("1.99.231-test.alpha"))
+
+        // numeric order
+        XCTAssertLessThan(try Semver("1.99.231-test.1.2"), try Semver("1.99.231-test.1.3"))
 
         // numeric < non-numeric
         XCTAssertLessThan(try Semver("1.99.231-test.2"), try Semver("1.99.231-test.19b"))

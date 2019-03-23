@@ -39,10 +39,9 @@ extension Semver {
         let patch: String
         let prereleaseIdentifiers: [String]
         let buildMetadataIdentifiers: [String]
-        let extra: String
 
-        let validateRegex = try NSRegularExpression(pattern: "^([0-9A-Za-z|\\\(prereleaseDelimiter)|\\\(dotDelimiter)|\\\(buildMetaDataDelimiter)]+)$")
-        guard input.rangeOfFirstMatch(for: validateRegex).length == input.count else {
+        let validator = try NSRegularExpression(pattern: "^([0-9A-Za-z|\\\(prereleaseDelimiter)|\\\(dotDelimiter)|\\\(buildMetaDataDelimiter)]+)$")
+        guard input.rangeOfFirstMatch(for: validator).length == input.count else {
             throw ParsingError.malformedString(input, nil)
         }
 
@@ -75,30 +74,31 @@ extension Semver {
         patch = try scanNextVersion(versionScanner)
 
         let scanIndex = String.Index(encodedOffset: scanner.scanLocation)
-        extra = String(input[scanIndex...])
+        var remainder = String(input[scanIndex...])
         do {
-            let prereleaseRegex = try NSRegularExpression(pattern: "(?<=\(prereleaseDelimiter))([0-9A-Za-z-\\\(dotDelimiter)]+)")
-            prereleaseIdentifiers = Range(extra.rangeOfFirstMatch(for: prereleaseRegex), in: extra)
-                .map { String(extra[$0]) }
+            let prereleaseRegex = try NSRegularExpression(pattern: "(?<=^\(prereleaseDelimiter))([0-9A-Za-z-\\\(dotDelimiter)]+)")
+            let range = Range(remainder.rangeOfFirstMatch(for: prereleaseRegex), in: remainder)
+            prereleaseIdentifiers = range
+                .map { String(remainder[$0]) }
                 .map { $0.components(separatedBy: dotDelimiter) }
                 ?? []
+            remainder = range.map { String(remainder[$0.upperBound...]) } ?? remainder
         } catch let e {
             throw ParsingError.parseError(.prereleaseIdentifiers, e)
         }
 
         do {
-            let buildMetadataRegex = try NSRegularExpression(pattern: "(?<=\\\(buildMetaDataDelimiter))([0-9A-Za-z-\\\(dotDelimiter)]+)")
-            buildMetadataIdentifiers = Range(extra.rangeOfFirstMatch(for: buildMetadataRegex), in: extra)
-                .map { String(extra[$0]) }
+            let buildMetadataRegex = try NSRegularExpression(pattern: "(?<=^\\\(buildMetaDataDelimiter))([0-9A-Za-z-\\\(dotDelimiter)]+)")
+            let range = Range(remainder.rangeOfFirstMatch(for: buildMetadataRegex), in: remainder)
+            buildMetadataIdentifiers = range
+                .map { String(remainder[$0]) }
                 .map { $0.components(separatedBy: dotDelimiter) }
                 ?? []
+            remainder = range.map { String(remainder[$0.upperBound...]) } ?? remainder
         } catch let e {
             throw ParsingError.parseError(.buildMetadataIdentifiers, e)
         }
-
-        let prerelease = prereleaseIdentifiers.count > 0 ? prereleaseDelimiter + prereleaseIdentifiers.joined(separator: dotDelimiter) : ""
-        let metadata = buildMetadataIdentifiers.count > 0 ? buildMetaDataDelimiter + buildMetadataIdentifiers.joined(separator: dotDelimiter) : ""
-        guard extra.replacingOccurrences(of: prerelease, with: "").replacingOccurrences(of: metadata, with: "").count == 0 else {
+        guard remainder.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).count == 0 else {
             throw ParsingError.malformedString(input, nil)
         }
 
