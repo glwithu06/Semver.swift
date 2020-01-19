@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="Swift" src="https://img.shields.io/badge/Swift-4.2-orange.svg">
+  <img alt="Swift" src="https://img.shields.io/badge/Swift-5.1-orange.svg">
   <a href="https://cocoapods.org/pods/Semver.swift" target="_blank">
     <img alt="CocoaPods" src="http://img.shields.io/cocoapods/v/Semver.swift.svg">
   </a>
@@ -21,8 +21,7 @@ Semantic Versioning implementation in Swift.
 
 ## Requirements
 
-* Xcode 10.1+
-* Swift 4.2
+* Swift 5.1
 * iOS 8
 * macOS 10.11
 * tvOS 9.0
@@ -89,17 +88,17 @@ let version = Semver(major: 1, minor: 23, patch: 45, prereleaseIdentifiers: ["rc
 You can create `Semver` from String.
 
 ```Swift
-let version = try Semver("1.23.45-rc.1+B001")
+let version = try Semver(string: "1.23.45-rc.1+B001")
 
 ```
 or from Numeric.
 
 ```Swift
-let version = try Semver(1.23)
+let version = try Semver(number: 1.23)
 ```
 
 ```Swift
-let version = try Semver(10)
+let version = try Semver(number: 10)
 ```
 
 If the version is invalid, it throws a `ParsingError`.

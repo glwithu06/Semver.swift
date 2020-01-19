@@ -10,18 +10,18 @@ import Foundation
 
 extension Semver: ExpressibleByFloatLiteral {
     public init(floatLiteral value: FloatLiteralType) {
-        self = (try? Semver(value)) ?? Semver(major: "0")
+        self = (try? Semver(number: value)) ?? Semver(major: "0")
     }
 }
 
 extension Semver: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: IntegerLiteralType) {
-        self = (try? Semver(value)) ?? Semver(major: "0")
+        self = (try? Semver(number: value)) ?? Semver(major: "0")
     }
 }
 
 extension Semver: ExpressibleByStringLiteral {
     public init(stringLiteral value: StringLiteralType) {
-        self = (try? Semver(value)) ?? Semver(major: "0")
+        self = (try? Semver(string: value)) ?? Semver(major: "0")
     }
 }
