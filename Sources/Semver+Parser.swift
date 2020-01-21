@@ -73,7 +73,7 @@ extension Semver {
         minor = try scanNextVersion(versionScanner)
         patch = try scanNextVersion(versionScanner)
 
-        let scanIndex = String.Index(encodedOffset: scanner.scanLocation)
+        let scanIndex = String.Index(utf16Offset: scanner.scanLocation, in: input)
         var remainder = String(input[scanIndex...])
         do {
             let prereleaseRegex = try NSRegularExpression(pattern: "(?<=^\(prereleaseDelimiter))([0-9A-Za-z-\\\(dotDelimiter)]+)")
@@ -113,7 +113,7 @@ extension Semver {
     ///
     /// - Parameter version: a string to parse.
     /// - Throws: throw `ParsingError` if the string is not a valid representation of a semantic version.
-    public init(_ version: String) throws {
+    public init(string version: String) throws {
         self = try Semver.parse(version)
     }
 
@@ -121,7 +121,7 @@ extension Semver {
     ///
     /// - Parameter version: a numeric object to parse.
     /// - Throws: throw `ParsingError` if the numeric object is not a valid representation of a semantic version.
-    public init<T: Numeric>(_ version: T) throws {
+    public init<T: Numeric>(number version: T) throws {
         self = try Semver.parse("\(version)")
     }
 }
@@ -129,7 +129,7 @@ extension Semver {
 extension Bundle {
     public var version: Semver? {
         if let bundleVersion = self.infoDictionary?["CFBundleShortVersionString"] as? String {
-            return try? Semver(bundleVersion)
+            return try? Semver(string: bundleVersion)
         } else {
             return nil
         }
