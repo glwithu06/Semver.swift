@@ -18,5 +18,5 @@ let package = Package(
             dependencies: ["Semver"],
             path: "Tests")
     ],
-    swiftLanguageVersions: [.version("5.1")]
+    swiftLanguageVersions: [.version("5")]
 )
